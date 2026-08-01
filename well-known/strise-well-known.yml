@@ -1,0 +1,34 @@
+generated: '2026-07-21'
+method: searched
+source: live /.well-known probes of Strise hosts
+hosts:
+- host: https://mcp.strise.ai
+  documents:
+  - path: /.well-known/oauth-authorization-server   # RFC 8414
+    status: 200
+    file: strise-oauth-authorization-server.json
+  - path: /.well-known/oauth-protected-resource      # RFC 9728
+    status: 200
+    file: strise-oauth-protected-resource.json
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/security.txt
+    status: 404
+- host: https://graphql.strise.ai
+  documents:
+  - path: /.well-known/security.txt
+    status: 405
+  - path: /.well-known/openid-configuration
+    status: 405
+- host: https://www.strise.ai
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+notes: >-
+  The Strise MCP server (https://mcp.strise.ai) publishes RFC 8414 OAuth
+  Authorization Server metadata and RFC 9728 OAuth Protected Resource
+  metadata, enabling MCP clients to discover the OAuth endpoints and register
+  dynamically (RFC 7591). No security.txt or OIDC discovery document is
+  published on the marketing or GraphQL hosts.

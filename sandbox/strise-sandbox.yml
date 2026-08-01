@@ -1,0 +1,29 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.strise.ai/api/api-faq/
+environments:
+- name: sandbox
+  purpose: >-
+    Isolated environment for building and testing Connect API integrations
+    (onboarding, screening, reviews, triggers) without affecting production
+    portfolios.
+- name: production
+  purpose: Live environment operating on the team's real portfolio and data.
+documented_differences:
+- operation: reviewTriggerEventGenerate
+  behavior: >-
+    In sandbox only the first configured trigger rule is considered; in
+    production all trigger rules are considered.
+- operation: sidepanel PDF
+  behavior: >-
+    The lightweight sidepanel PDF report is not supported in sandbox or via the
+    API generally (not relevant to onboarding use cases); use reviewCompanyCreate
+    + the review { pdf } query instead.
+test_values:
+  published: false
+  note: >-
+    Strise does not publish fixed magic test identifiers or synthetic test
+    companies in its public docs; sandbox testing uses real organization
+    numbers against the sandbox environment. No test values are invented here.
+access:
+  note: Sandbox access is provisioned with API credentials; request via tech@strise.ai.

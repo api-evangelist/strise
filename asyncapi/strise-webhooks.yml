@@ -1,0 +1,43 @@
+generated: '2026-07-21'
+method: searched
+type: Webhooks
+status: alpha
+source: https://docs.strise.ai/api/webhooks/
+spec_type: none    # provider documents webhooks but publishes no AsyncAPI document
+transport:
+  method: POST
+  scheme: https
+  auth_header: 'Authorization: Bearer <JWT>'
+management: Settings -> Team -> Webhooks (team managers only)
+subscription_fields: [endpoint_url, event_types, active]
+envelope:
+  id: unique event identifier
+  version: '1'
+  eventType: event category
+  teamId: team identifier
+  subscriptionId: subscription identifier
+  timestamp: ISO 8601 timestamp
+  data: event-specific payload (varies by eventType)
+events:
+- type: review.completed
+  description: A review has finished processing and its result is ready.
+- type: form.status.changed
+  description: A customer-facing form has changed status (includes old and new statuses).
+signature_verification:
+  issuer: Google-issued OIDC tokens
+  steps:
+  - Validate the Google signature against Google public keys.
+  - 'Check iss: https://accounts.google.com'
+  - 'Verify email: webhook-delivery@strise-prod.iam.gserviceaccount.com'
+  - Verify aud matches your registered endpoint URL.
+  - Confirm exp is in the future.
+  warning: >-
+    A valid Google signature alone does NOT prove the request is from Strise;
+    the email and audience claims must both be verified.
+delivery:
+  ack: Respond 2xx to acknowledge; non-2xx triggers retries.
+  testing: '"Send mock event" action delivers a test event with production-level signing.'
+notes: >-
+  Outbound webhooks are in Alpha. Additional event types are planned; contact
+  Strise to request new events. No AsyncAPI document is published — this is the
+  documented webhook catalog, not a fabricated spec.

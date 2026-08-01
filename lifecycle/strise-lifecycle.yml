@@ -1,0 +1,24 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.strise.ai/help-center/strise-status/, https://docs.strise.ai/api/monitoring-alerts-api/, https://docs.strise.ai/whats-new/
+versioning:
+  scheme: additive-graphql
+  detail: >-
+    The GraphQL schema evolves additively. Beta surfaces (e.g. Monitoring
+    Alerts) may change field names/shapes; integrations should pin to documented
+    fields and expect additive evolution. No numbered API version is exposed in
+    the endpoint path.
+maturity_labels: [alpha, beta, early-access, released, generally-available]
+status_page: https://status.strise.ai/
+changelog: https://docs.strise.ai/whats-new/
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No formal deprecation policy or RFC 8594 Sunset/Deprecation header support
+    is documented publicly. Change management is communicated via the dated
+    "What's new" changelog and beta/GA maturity labels.
+sla:
+  url: null
+  note: Uptime is published on the status page; no public numeric SLA target found.
+deprecated_operations: []

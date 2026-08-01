@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: searched
+status: published
+source: https://docs.strise.ai/mcp/
+server:
+  name: strise
+  transport: http                 # streamable HTTP
+  url: https://mcp.strise.ai/mcp
+  docs: https://docs.strise.ai/mcp/
+authentication:
+  type: oauth2
+  provider: Auth0
+  flows: [authorization_code]
+  dynamic_client_registration: true   # RFC 7591
+  pkce: S256
+  authorization_endpoint: https://mcp.strise.ai/oauth/authorize
+  token_endpoint: https://mcp.strise.ai/oauth/token
+  registration_endpoint: https://mcp.strise.ai/oauth/register
+  scopes_supported: [openid, profile, email, offline_access]
+  token_header: 'Authorization: Bearer <token>'
+  team_header: X-Strise-Team        # optional team selection; user must belong to >=1 team
+  metadata:
+    oauth_authorization_server: https://mcp.strise.ai/.well-known/oauth-authorization-server
+    oauth_protected_resource: https://mcp.strise.ai/.well-known/oauth-protected-resource
+description: >-
+  Official hosted, remote MCP server that exposes a curated subset of the
+  Strise Connect (GraphQL) platform to Claude and other MCP-aware assistants.
+  Built on Connect. Destructive tools are flagged destructive: true. Setup via
+  the Claude connector directory (one-click), Claude Desktop JSON config, or
+  any MCP client pointed at the remote endpoint.
+tool_categories:
+- name: Search & lookup
+  description: Company and person searches by name or registration number.
+- name: Entity profiles
+  description: Corporate structures, addresses, identifiers, and ownership information.
+- name: Risk assessment
+  description: Calculated Risk scores, sanctions/PEP screening, adverse media events.
+- name: Monitoring
+  description: Alert management and portfolio briefing.
+- name: Workflows
+  description: Review creation, report ordering, and compliance logging.
+notes: >-
+  Tool names/schemas are not published in the public docs (server enumerates
+  them at runtime after OAuth). Categories above are captured verbatim from the
+  MCP documentation; individual tool signatures require an authenticated session.

@@ -1,0 +1,47 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.strise.ai/whats-new/
+scheme: dated-release-notes
+title: "What's new"
+current_window: '2026'
+entries:
+- date: '2026-05'
+  status: released
+  highlights: >-
+    Financial change alerts on company information — four new monitoring toggles
+    (share capital, revenue, net income, auditor notes) that alert when values
+    shift between annual filings; coverage Norway, Sweden, Denmark, UK; opt-in.
+- date: '2026-05'
+  status: released
+  highlights: >-
+    SECO Swiss sanctions added as a first-class, independent screening source
+    (enabled by default alongside EU, OFAC, UK, UN), no longer routed through
+    the Dow Jones group.
+- date: '2026-05'
+  status: early-access
+  highlights: >-
+    Portfolio Risk Assessment — risk-class distribution across the portfolio in
+    Portfolio Health, with reviewer-set risk levels overlaid on calculated risk.
+- date: '2026-05'
+  status: shipped
+  highlights: >-
+    Per-alert-type email routing — PEP, Sanctions, Relation, and Company
+    Information alerts can route to a shared team-wide email.
+- date: '2026-05'
+  status: shipped
+  highlights: >-
+    Smarter search — typo/diacritic/casing tolerance, stopword stripping,
+    identifier-index routing, deselectable country filters, 20s timeout.
+- date: '2026-04'
+  status: released
+  highlights: >-
+    Platform reframed into three layers — SuperData (data & entity resolution),
+    RiskLense (risk & regulatory context), Compliance Memory — underpinning every
+    module, API, and agent.
+- date: '2026-04'
+  status: released
+  highlights: Portfolio Health (early access) — Copilot-driven portfolio view.
+breaking_changes:
+  note: >-
+    No breaking API changes recorded in the captured window. The Monitoring
+    Alerts Connect API surface is marked beta and evolves additively.

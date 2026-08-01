@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.strise.ai/api/onboarding-a-business-customer/, https://docs.strise.ai/api/monitoring-alerts-api/, https://docs.strise.ai/api/api-faq/
+note: >-
+  Entity graph captured from the Strise Connect GraphQL documentation (there is
+  no OpenAPI to derive from). Field-level shapes require the authenticated schema
+  explorer at graphql.strise.ai/connect/docs.
+entities:
+- name: Company
+  description: Business entity resolved in the Strise Knowledge Graph.
+  identifiers: [strise global id, nationalId + country (org number)]
+  fields: [name, identifiers, sanctioned, monitoringStatus, relationships]
+- name: Person
+  description: Business person or private person related to a company.
+  fields: [name, roles, pep, sanctions, beneficialOwner]
+- name: Relationship
+  description: Edge between a company and a related person/company (roles, ownership).
+  fields: [edges, node, person, roles, title, beneficialOwner]
+- name: PEP
+  description: Politically Exposed Person screening result.
+  fields: [isPep, pepRoles (role, country)]
+- name: Sanctions
+  description: Sanctions screening result.
+  fields: [isSanctioned, sanctionLists]
+- name: Review
+  description: A compliance review/onboarding case; produces a PDF report.
+  identifiers: [id (caller-supplied, unique per review)]
+  fields: [id, pdf]
+- name: Alert
+  description: Lightweight monitoring alert envelope (something changed on an entity/dataset).
+  fields: [kind (PEP|SANCTIONS|RELATIONS|COMPANY_INFORMATION), state (UNRESOLVED|RESOLVED), insertedAt, computedAt, resolvedBy, resolvedAt]
+- name: AlertData
+  description: The underlying before/after change behind one alert (shape depends on kind).
+relationships:
+- {from: Company, type: has_many, to: Relationship, via: relationships.edges}
+- {from: Relationship, type: has_one, to: Person, via: node.person}
+- {from: Person, type: has_one, to: PEP, via: pep}
+- {from: Person, type: has_one, to: Sanctions, via: sanctions}
+- {from: Company, type: has_one, to: Sanctions, via: sanctioned}
+- {from: Company, type: has_many, to: Review, via: reviewCompanyCreate}
+- {from: Company, type: has_many, to: Alert, via: alerts}
+- {from: Alert, type: has_one, to: AlertData, via: alertData}
+operations:
+  queries: [companyIdentifierSearch, review, alerts, alertData]
+  mutations: [companyAddToMonitoring, companiesAddToMonitoring, CompanyRemoveFromMonitoring, reviewCompanyCreate, reviewTriggerEventGenerate, alertUpdate]

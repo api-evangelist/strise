@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: generated
+source: https://docs.strise.ai/api/
+skills:
+- file: strise-onboard-business-customer.md
+  name: Onboard a business customer with Strise
+  api: Strise Connect API (GraphQL)
+  operations: [companyIdentifierSearch, companyAddToMonitoring, companiesAddToMonitoring]
+- file: strise-run-review-and-fetch-report.md
+  name: Run a review and fetch its PDF report
+  api: Strise Connect API (GraphQL)
+  operations: [reviewCompanyCreate, review, reviewTriggerEventGenerate]
+- file: strise-consume-monitoring-alerts.md
+  name: Consume monitoring alerts over the Connect API
+  api: Strise Connect API (GraphQL)
+  operations: [alerts, alertData, alertUpdate]

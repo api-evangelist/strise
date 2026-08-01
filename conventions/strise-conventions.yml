@@ -1,0 +1,62 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.strise.ai/technology/strise-connect-api/, https://docs.strise.ai/api/monitoring-alerts-api/, https://docs.strise.ai/api/api-faq/
+api_style:
+  protocol: GraphQL
+  endpoint: https://graphql.strise.ai/connect/graphql
+  schema_explorer: https://graphql.strise.ai/connect/docs
+  rationale: >-
+    GraphQL lets clients request exactly the fields needed in one query,
+    reducing over-fetching across companies, persons, ownership, screening,
+    monitoring, and reviews.
+authentication:
+  style: bearer-token
+  header: 'Authorization: Bearer <token>'
+  see: authentication/strise-authentication.yml
+pagination:
+  style: relay-cursor + limit/offset
+  detail: >-
+    List surfaces return Relay-style connections (edges { node { ... } }).
+    The alerts query additionally accepts a page object with limit and offset
+    (e.g. page: { limit: 50, offset: 0 }). Filtering is via a where argument
+    (states, kinds, entity, entityKind, period).
+  response_fields: [edges, node]
+error_envelope:
+  style: graphql-errors
+  detail: >-
+    Errors follow the GraphQL specification: a top-level errors[] array with
+    message (and path/extensions) alongside partial data. This is not RFC 9457
+    problem+json (that format applies to REST). Some mutations also return a
+    boolean success field (e.g. reviewTriggerEventGenerate returns success:
+    false on failure).
+idempotency:
+  supported: partial
+  detail: >-
+    reviewCompanyCreate accepts a caller-supplied unique id field that is bound
+    to the created Review and can later be used to fetch its PDF via the review
+    query; the report remains retrievable as long as the id is known. Strise
+    does not document a general-purpose Idempotency-Key header for arbitrary
+    mutations, so this is a per-operation correlation id rather than a
+    provider-wide idempotency contract.
+environments:
+  detail: >-
+    Strise exposes a sandbox environment and a production environment. Behavior
+    can differ (e.g. reviewTriggerEventGenerate considers only the first trigger
+    rule in sandbox but all trigger rules in production).
+  see: sandbox/strise-sandbox.yml
+identifiers:
+  detail: >-
+    Companies are looked up by national organization number + ISO country code
+    (companyIdentifierSearch input { nationalId, country }) which resolves to a
+    stable Strise global entity id used in all subsequent calls.
+versioning:
+  detail: >-
+    The schema evolves additively; beta surfaces (e.g. Monitoring Alerts) may
+    change field names/shapes — pin integrations to documented fields and
+    expect additive evolution.
+  see: lifecycle/strise-lifecycle.yml
+cross_links:
+  errors: null
+  webhooks: asyncapi/strise-webhooks.yml
+  authentication: authentication/strise-authentication.yml
+  data_model: data-model/strise-data-model.yml

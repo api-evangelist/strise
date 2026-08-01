@@ -1,7 +1,28 @@
 aid: strise
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/strise.png
 name: Strise
-description: 'Strise is a company surfaced as a portfolio company of atomico and added to the API Evangelist
-  network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting the enrichment pipeline.'
+description: >-
+  Strise is an Oslo-based (founded 2019) AI platform for financial-crime
+  compliance — "The Autonomous FinCrime Department" that European fincrime teams
+  run on. It automates AML and KYC/KYB work across a Knowledge Graph of
+  companies, persons, ownership, PEP/sanctions and adverse-media screening,
+  continuous monitoring, identity verification and risk scoring. Beyond the SaaS
+  modules (SuperData, RiskLense, Compliance Memory, KYB, KYC, Monitoring, IDV,
+  Forms, Grow), Strise exposes its platform programmatically through the Strise
+  Connect API — a GraphQL API for search, screening, portfolio monitoring,
+  reviews and webhooks — and a hosted, OAuth-protected MCP server for AI agents.
 url: https://raw.githubusercontent.com/api-evangelist/strise/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,11 +32,42 @@ x-tier: stub
 x-tier-reason: portfolio-lead
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
 - Company
 - Fintech
-apis: []
+- RegTech
+- AML
+- KYC
+- KYB
+- Compliance
+- Financial Crime
+- Screening
+- Sanctions
+- PEP
+- GraphQL
+- MCP
+apis:
+- name: Strise Connect API
+  description: >-
+    GraphQL API for programmatic access to core Strise functionality — search
+    companies and persons, screen for PEP/sanctions/ownership, run reviews,
+    manage a monitoring portfolio, and subscribe to webhooks.
+  humanURL: https://docs.strise.ai/technology/strise-connect-api/
+  baseURL: https://graphql.strise.ai/connect/graphql
+  tags:
+  - GraphQL
+  - AML
+  - KYC
+  - Screening
+  - Monitoring
+  properties:
+  - type: Documentation
+    url: https://docs.strise.ai/technology/strise-connect-api/
+  - type: APIReference
+    url: https://graphql.strise.ai/connect/docs
+  - type: Authentication
+    url: authentication/strise-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
@@ -24,3 +76,62 @@ maintainers:
 common:
 - type: Website
   url: https://www.strise.ai
+- type: DeveloperPortal
+  url: https://docs.strise.ai
+- type: Documentation
+  url: https://docs.strise.ai
+- type: APIReference
+  url: https://graphql.strise.ai/connect/docs
+- type: GettingStarted
+  url: https://docs.strise.ai/api/onboarding-a-business-customer/
+- type: Support
+  url: https://docs.strise.ai/help-center/
+- type: Blog
+  url: https://www.strise.ai/blog
+- type: GitHubOrganization
+  url: https://github.com/strise
+- type: SignUp
+  url: https://app.strise.ai/
+- type: PrivacyPolicy
+  url: https://www.strise.ai/privacy-policy
+- type: StatusPage
+  url: https://status.strise.ai/
+- type: TrustCenter
+  url: https://trust.strise.ai/
+- type: Compliance
+  url: https://docs.strise.ai/technology/compliance-in-strise/
+- type: Security
+  url: https://docs.strise.ai/technology/bug-bounty-program/
+- type: MCPServer
+  url: mcp/strise-mcp.yml
+- type: LLMsTxt
+  url: llms/strise-llms.txt
+- type: WellKnown
+  url: well-known/strise-well-known.yml
+- type: Authentication
+  url: authentication/strise-authentication.yml
+- type: Conventions
+  url: conventions/strise-conventions.yml
+- type: Conformance
+  url: conformance/strise-conformance.yml
+- type: Sandbox
+  url: sandbox/strise-sandbox.yml
+- type: ChangeLog
+  url: changelog/strise-changelog.yml
+- type: Webhooks
+  url: asyncapi/strise-webhooks.yml
+- type: Lifecycle
+  url: lifecycle/strise-lifecycle.yml
+- type: DataModel
+  url: data-model/strise-data-model.yml
+- type: DomainSecurity
+  url: security/strise-domain-security.yml
+- type: VulnerabilityDisclosure
+  url: security/strise-vulnerability-disclosure.yml
+- type: AgentSkill
+  url: skills/_index.yml
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 20
+  pass: local-v1

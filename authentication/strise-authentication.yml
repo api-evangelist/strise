@@ -1,0 +1,50 @@
+generated: '2026-07-21'
+method: searched
+source: https://docs.strise.ai/technology/strise-connect-api/, https://docs.strise.ai/mcp/, https://docs.strise.ai/technology/single-sign-on/
+summary:
+  types: [http, oauth2, openIdConnect]
+  api_key_in: []
+  oauth2_flows: [authorizationCode]
+  note: >-
+    Strise has no OpenAPI (the Connect API is GraphQL), so this profile is
+    captured from the documentation rather than derived from a spec.
+schemes:
+- name: ConnectApiBearer
+  surface: Strise Connect API (GraphQL)
+  type: http
+  scheme: bearer
+  description: >-
+    The Connect API (https://graphql.strise.ai/connect/graphql) authenticates
+    requests with a bearer access token in the Authorization header. Access is
+    provisioned by Strise; request via tech@strise.ai.
+  docs: https://docs.strise.ai/technology/strise-connect-api/
+- name: McpOAuth
+  surface: Strise MCP server (https://mcp.strise.ai/mcp)
+  type: oauth2
+  provider: Auth0
+  flows:
+  - flow: authorizationCode
+    authorizationUrl: https://mcp.strise.ai/oauth/authorize
+    tokenUrl: https://mcp.strise.ai/oauth/token
+    registrationUrl: https://mcp.strise.ai/oauth/register   # RFC 7591 dynamic client registration
+    pkce: S256
+    scopes:
+      openid: OpenID Connect authentication
+      profile: Basic profile information
+      email: Email address
+      offline_access: Refresh-token issuance
+  description: >-
+    The MCP server is an OAuth 2.0 protected resource. Clients register
+    dynamically (RFC 7591), authorize with PKCE (S256) against Auth0 using the
+    same credentials as the Strise web app, and present Authorization: Bearer
+    <token>. Optional X-Strise-Team header selects the acting team.
+  docs: https://docs.strise.ai/mcp/
+- name: SingleSignOn
+  surface: Strise web application (app.strise.ai)
+  type: openIdConnect
+  provider: Auth0
+  description: >-
+    Web login supports SSO via Auth0 with OIDC. Email-domain redirection routes
+    users to their IdP (e.g. Microsoft Entra ID); Microsoft and Google OIDC
+    buttons are also offered.
+  docs: https://docs.strise.ai/technology/single-sign-on/
