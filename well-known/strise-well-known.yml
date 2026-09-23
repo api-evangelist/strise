@@ -1,13 +1,13 @@
-generated: '2026-07-21'
+generated: '2026-09-19'
 method: searched
 source: live /.well-known probes of Strise hosts
 hosts:
 - host: https://mcp.strise.ai
   documents:
-  - path: /.well-known/oauth-authorization-server   # RFC 8414
+  - path: /.well-known/oauth-authorization-server
     status: 200
     file: strise-oauth-authorization-server.json
-  - path: /.well-known/oauth-protected-resource      # RFC 9728
+  - path: /.well-known/oauth-protected-resource
     status: 200
     file: strise-oauth-protected-resource.json
   - path: /.well-known/openid-configuration
@@ -26,9 +26,27 @@ hosts:
     status: 404
   - path: /.well-known/api-catalog
     status: 404
-notes: >-
-  The Strise MCP server (https://mcp.strise.ai) publishes RFC 8414 OAuth
-  Authorization Server metadata and RFC 9728 OAuth Protected Resource
-  metadata, enabling MCP clients to discover the OAuth endpoints and register
-  dynamically (RFC 7591). No security.txt or OIDC discovery document is
-  published on the marketing or GraphQL hosts.
+- host: https://login.strise.ai
+  documents:
+  - path: /.well-known/oauth-authorization-server
+    status: 200
+    file: strise-login-oauth-authorization-server.json
+    bytes: 2513
+  path_echo_control: passed
+notes: The Strise MCP server (https://mcp.strise.ai) publishes RFC 8414 OAuth Authorization Server metadata
+  and RFC 9728 OAuth Protected Resource metadata, enabling MCP clients to discover the OAuth endpoints
+  and register dynamically (RFC 7591). No security.txt or OIDC discovery document is published on the
+  marketing or GraphQL hosts.
+x-mcp-probe:
+  probed: '2026-09-19'
+  issue: roadmap#321, roadmap#337
+  documents:
+  - host: https://login.strise.ai
+    path: /.well-known/oauth-authorization-server
+    file: strise-login-oauth-authorization-server.json
+  validated_on: resource (RFC 9728) / issuer (RFC 8414, OIDC)
+  negative_control: one per host; a 2xx JSON object at an impossible path discards the host
+note: 'MCP-host OAuth discovery added 2026-09-19 (roadmap#321/#337): the harvest visits a provider''s
+  primary hosts, and RFC 9728 protected-resource metadata lives on the MCP host, so these documents existed
+  and were invisible to the scorer. Fetched live and validated on `resource`/`issuer`; one negative control
+  per host.'
