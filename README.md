@@ -64,6 +64,112 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Strise is a company surfaced as a portfolio company of atomico and added to the API Evangelist network as a stub for enrichment. Sector: fintech. This profile is a lead awaiting the enrichment pipeline.
+Strise is an Oslo-based (founded 2019) AI platform for financial-crime compliance — "The Autonomous FinCrime Department" that European fincrime teams run on. It automates AML and KYC/KYB work across a Knowledge Graph of companies, persons, ownership, PEP/sanctions and adverse-media screening, continuous monitoring, identity verification and risk scoring. Beyond the SaaS modules (SuperData, RiskLense, Compliance Memory, KYB, KYC, Monitoring, IDV, Forms, Grow), Strise exposes its platform programmatically through the Strise Connect API — a GraphQL API for search, screening, portfolio monitoring, reviews and webhooks — and a hosted, OAuth-protected MCP server for AI agents.
 
-Backed by: atomico — https://www.strise.ai
+**Areas:** Company · Fintech · RegTech · AML · KYC · KYB · Compliance · Financial Crime · Screening · Sanctions · PEP · GraphQL
+
+## Strise on APIs.io
+
+Everything profiled for Strise is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/strise/](https://apis.io/providers/strise/)** — or go straight to one of the APIs or properties below.
+
+### APIs (1)
+
+- [Strise Connect API](https://apis.io/apis/strise/strise-connect-api/) — GraphQL API for programmatic access to core Strise functionality — search companies and persons, screen for PEP/sanctions/ownership, run reviews, manage a…
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### AsyncAPI (1)
+
+Event-driven and webhook contracts.
+
+- [Strise Webhooks](https://apis.io/asyncapis/strise/strise-webhooks/)
+
+#### MCP servers (1)
+
+Model Context Protocol servers that expose the API to agents.
+
+- [strise](https://apis.io/servers/strise/strise/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Strise Authentication](https://apis.io/security/strise/strise-authentication/)
+- [Strise Domain Security](https://apis.io/security/strise/strise-domain-security/)
+- [Strise Trust Center](https://apis.io/security/strise/strise-trust-center/)
+- [Strise Vulnerability Disclosure](https://apis.io/security/strise/strise-vulnerability-disclosure/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.strise.ai)
+- [Documentation](https://docs.strise.ai)
+- [Getting started](https://docs.strise.ai/api/onboarding-a-business-customer/)
+- [API reference](https://graphql.strise.ai/connect/docs)
+- [Sign up](https://app.strise.ai/)
+- [Support](https://docs.strise.ai/help-center/)
+- [Blog](https://www.strise.ai/blog)
+- [Security](https://docs.strise.ai/technology/bug-bounty-program/)
+- [Compliance](https://docs.strise.ai/technology/compliance-in-strise/)
+- [Trust centre](https://trust.strise.ai/)
+- [Privacy policy](https://www.strise.ai/privacy-policy)
+- [GitHub](https://github.com/strise)
+- [Status](https://status.strise.ai/)
+
+## API Evangelist rating
+
+**Kin Score 48.8** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 75.0 |
+| Contract quality | 39.0 |
+| Contract governance | 18.2 |
+| Operational transparency | 44.7 |
+| Developer ergonomics | 66.1 |
+| Access clarity | 39.5 |
+
+**Agent readiness 45.5** — agent-ready (gated down from agent-native)
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | — |
+| MCP Server | verified |
+| Auth Clarity | served (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | — |
+| Event Surface Described | yes |
+| Agent Skills | derived (partial credit) |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | served (partial credit) |
+| Protected Resource Metadata | verified |
+| Dynamic Client Registration | yes |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | na |
+
+**Regulatory alignment 31.4** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/strise/](https://apis.io/providers/strise/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Strise: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/strise/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
